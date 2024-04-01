@@ -1,0 +1,21 @@
+[
+    {
+      "id": 1,
+      "author": "JohnDoe",
+      "content": "Just had a great time at the park! #nature #fun",
+      "createdAt": "2024-04-01T12:30:00Z"
+    },
+    {
+      "id": 2,
+      "author": "JaneSmith",
+      "content": "Excited to start my new job tomorrow! #newbeginnings",
+      "createdAt": "2024-03-31T18:45:00Z"
+    },
+    {
+      "id": 3,
+      "author": "SamJones",
+      "content": "Working on a new project, feeling productive! 💻",
+      "createdAt": "2024-03-30T09:15:00Z"
+    }
+  ]
+  
