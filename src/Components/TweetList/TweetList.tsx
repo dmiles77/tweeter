@@ -1,14 +1,7 @@
 import React from 'react';
-import Grid from '@mui/material/Grid';
-import { styled } from '@mui/system';
 import { useAppContext } from '../../Context/AppContext';
 import { TweetItem } from './TweetItem';
-
-const TweetListContainer = styled(Grid)({
-  width: '400px',
-  maxHeight: '350px',
-  overflowY: 'auto',
-});
+import { TweetListContainer } from './TweetListStyles';
 
 const TweetList: React.FC = () => {
   const { tweets } = useAppContext();

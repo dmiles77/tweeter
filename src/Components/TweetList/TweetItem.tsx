@@ -1,19 +1,9 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import { styled } from '@mui/system';
 import { format } from 'date-fns';
 import { Tweet } from '../../Context/AppContext';
-
-const TweetContainer = styled(Grid)({
-    padding: '10px',
-    borderBottom: '1px solid #ccc',
-    borderLeft: 'none',
-    borderRight: 'none',
-    '&:first-child': {
-        borderTop: '1px solid #ccc',
-    },
-});
+import { TweetContainer } from './TweetListStyles';
 
 export const TweetItem: React.FC<{ tweet: Tweet }> = ({ tweet }) => {
     return (

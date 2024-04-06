@@ -1,29 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useAppContext, Tweet } from '../../Context/AppContext';
 import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import { Divider, Typography } from '@mui/material';
-import { styled } from '@mui/system';
-
-const NewTweetContainer = styled(Grid)({
-    padding: '15px',
-    border: '1px solid #ccc',
-    borderRadius: '15px',
-    minWidth: '400px',
-});
-
-const StyledButton = styled(Button)({
-    borderRadius: '20px',
-});
-
-const StyledAuthorText = styled(Typography)({
-    borderBottom: '1px lightgray dashed',
-    width: 'fit-content',
-    fontWeight: 'bold',
-    fontSize: 'small',
-    fontFamily: 'inherit',
-});
+import { NewTweetContainer, StyledAuthorText, StyledButton } from './NewTweetFormStyles';
 
 const NewTweetForm: React.FC = () => {
     const { addTweet, user } = useAppContext();
