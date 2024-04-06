@@ -10,6 +10,8 @@ export const NewTweetContainer = styled(Grid)({
 
 export const StyledButton = styled(Button)({
     borderRadius: '20px',
+    marginTop: '10px',
+    textTransform: 'none',
 });
 
 export const StyledAuthorText = styled(Typography)({

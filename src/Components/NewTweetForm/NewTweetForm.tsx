@@ -60,7 +60,6 @@ const NewTweetForm: React.FC = () => {
                         onClick={handleTweetSubmit}
                         disabled={!isValid || tweetContent.length === 0}
                         variant="contained"
-                        sx={{ marginTop: '10px' }}
                     >
                         <Typography variant='caption'>Tweet</Typography>
                     </StyledButton>
