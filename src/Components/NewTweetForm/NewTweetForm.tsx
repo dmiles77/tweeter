@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useAppContext, Tweet } from '../Context/AppContext';
+import { useAppContext, Tweet } from '../../Context/AppContext';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
@@ -15,6 +15,14 @@ const NewTweetContainer = styled(Grid)({
 
 const StyledButton = styled(Button)({
     borderRadius: '20px',
+});
+
+const StyledAuthorText = styled(Typography)({
+    borderBottom: '1px lightgray dashed',
+    width: 'fit-content',
+    fontWeight: 'bold',
+    fontSize: 'small',
+    fontFamily: 'inherit',
 });
 
 const NewTweetForm: React.FC = () => {
@@ -42,10 +50,13 @@ const NewTweetForm: React.FC = () => {
     return (
         <NewTweetContainer direction='column' container>
             <Grid item>
-                <Typography fontWeight='500' variant='body1'>{user.name}</Typography>
+                <StyledAuthorText>{user.name}</StyledAuthorText>
             </Grid>
             <Grid my={1} item>
                 <TextField
+                    InputProps={{
+                        disableUnderline: true,
+                    }}
                     variant="standard"
                     multiline
                     fullWidth
@@ -53,6 +64,7 @@ const NewTweetForm: React.FC = () => {
                     onChange={(e) => setTweetContent(e.target.value)}
                     error={!isValid}
                 />
+                <Divider />
             </Grid>
             <Grid item>
                 <Grid container justifyContent='flex-end'>

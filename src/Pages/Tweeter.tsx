@@ -1,6 +1,6 @@
 import React from 'react';
 import TweetList from '../Components/TweetList/TweetList';
-import NewTweetForm from '../Components/NewTweetForm';
+import NewTweetForm from '../Components/NewTweetForm/NewTweetForm';
 import { Container, Grid } from '@mui/material';
 import { styled } from '@mui/system';
 

@@ -6,6 +6,8 @@ import { TweetItem } from './TweetItem';
 
 const TweetListContainer = styled(Grid)({
   width: '400px',
+  maxHeight: '350px',
+  overflowY: 'auto',
 });
 
 const TweetList: React.FC = () => {
@@ -14,7 +16,7 @@ const TweetList: React.FC = () => {
   return (
     <TweetListContainer>
       {tweets.map((tweet) => (
-        <TweetItem tweet={tweet} />
+        <TweetItem key={tweet.id} tweet={tweet} />
       ))}
     </TweetListContainer>
   );
