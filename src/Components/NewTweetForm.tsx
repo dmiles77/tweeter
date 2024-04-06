@@ -3,12 +3,17 @@ import { useAppContext, Tweet } from '../Context/AppContext';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
-import { Typography } from '@mui/material';
+import { Divider, Typography } from '@mui/material';
 import { styled } from '@mui/system';
 
 const NewTweetContainer = styled(Grid)({
     padding: '15px',
     border: '1px solid #ccc',
+    borderRadius: '15px',
+    minWidth: '400px',
+});
+
+const StyledButton = styled(Button)({
     borderRadius: '20px',
 });
 
@@ -39,18 +44,36 @@ const NewTweetForm: React.FC = () => {
             <Grid item>
                 <Typography fontWeight='500' variant='body1'>{user.name}</Typography>
             </Grid>
-            <TextField
-                label="What's on your mind?"
-                variant="outlined"
-                multiline
-                value={tweetContent}
-                onChange={(e) => setTweetContent(e.target.value)}
-                error={!isValid}
-                helperText={`${tweetContent.length}/280`}
-            />
-            <Button onClick={handleTweetSubmit} disabled={!isValid}>
-                Post
-            </Button>
+            <Grid my={1} item>
+                <TextField
+                    variant="standard"
+                    multiline
+                    fullWidth
+                    value={tweetContent}
+                    onChange={(e) => setTweetContent(e.target.value)}
+                    error={!isValid}
+                />
+            </Grid>
+            <Grid item>
+                <Grid container justifyContent='flex-end'>
+                    <Grid alignContent='center' item>
+                        <Typography color={!isValid ? 'error' : 'textSecondary'} variant='body2'>
+                            {280 - tweetContent.length}
+                        </Typography>
+                    </Grid>
+                    <Grid px={1} item>
+                        <Divider orientation="vertical" />
+                    </Grid>
+                    <StyledButton
+                        onClick={handleTweetSubmit}
+                        disabled={!isValid || tweetContent.length === 0}
+                        variant="contained"
+                        sx={{ marginTop: '10px' }}
+                    >
+                        <Typography variant='caption'>Tweet</Typography>
+                    </StyledButton>
+                </Grid>
+            </Grid>
         </NewTweetContainer>
     );
 };
