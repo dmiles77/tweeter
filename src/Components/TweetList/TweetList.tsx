@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { useAppContext } from '../../Context/AppContext';
 import { TweetItem } from './TweetItem';
 import { TweetListContainer } from './TweetListStyles';
+import { Divider } from '@mui/material';
 
 const TweetList: React.FC = () => {
   const { tweets } = useAppContext();
@@ -14,6 +15,7 @@ const TweetList: React.FC = () => {
 
   return (
     <TweetListContainer>
+      <Divider />
       {sortedTweets.map((tweet) => (
         <TweetItem key={tweet.id} tweet={tweet} />
       ))}

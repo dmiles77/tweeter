@@ -5,6 +5,7 @@ export const TweetListContainer = styled(Grid)({
     width: '400px',
     maxHeight: '350px',
     overflowY: 'auto',
+    paddingTop: '10px',
   });
 
 export const TweetContainer = styled(Grid)({
@@ -12,7 +13,4 @@ export const TweetContainer = styled(Grid)({
     borderBottom: '1px solid #ccc',
     borderLeft: 'none',
     borderRight: 'none',
-    '&:first-child': {
-        borderTop: '1px solid #ccc',
-    },
 });
