@@ -4,6 +4,7 @@ import tweetsData from '../Mocks/tweets.json';
 type AppContextType = {
   tweets: Tweet[];
   addTweet: (tweet: Tweet) => void;
+  user: User;
 };
 
 // Create the context
@@ -14,6 +15,11 @@ export type Tweet = {
   author: string;
   content: string;
   createdAt: string; // Use string for simplicity
+};
+
+export type User = {
+  id: number;
+  name: string;
 };
 
 // custom hook to access the context
@@ -28,6 +34,10 @@ export const useAppContext = () => {
 // AppProvider component
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [tweets, setTweets] = useState<Tweet[]>([]);
+    const user = {
+        id: 1,
+        name: 'Daniel Miles',
+    };
 
     useEffect(() => {
         // Load mock data into the context when the component mounts
@@ -39,7 +49,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     };
 
     return (
-        <AppContext.Provider value={{ tweets, addTweet }}>
+        <AppContext.Provider value={{ tweets, addTweet, user }}>
             {children}
         </AppContext.Provider>
     );

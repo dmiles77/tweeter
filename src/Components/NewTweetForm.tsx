@@ -1,37 +1,58 @@
-// src/components/NewTweetForm.tsx
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAppContext, Tweet } from '../Context/AppContext';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import { Typography } from '@mui/material';
+import { styled } from '@mui/system';
+
+const NewTweetContainer = styled(Grid)({
+    padding: '15px',
+    border: '1px solid #ccc',
+    borderRadius: '20px',
+});
 
 const NewTweetForm: React.FC = () => {
-  const { addTweet } = useAppContext();
-  const [tweetContent, setTweetContent] = useState('');
+    const { addTweet, user } = useAppContext();
+    const [tweetContent, setTweetContent] = useState('');
+    const [isValid, setIsValid] = useState(true);
 
-  const handleTweetSubmit = () => {
-    // Validate tweet content length (max 280 characters)
-    if (tweetContent.length <= 280) {
-      const newTweet: Tweet = {
-        id: Date.now(),
-        author: 'Your Name', // Replace with actual author name
-        content: tweetContent,
-        createdAt: new Date().toISOString(),
-      };
-      addTweet(newTweet);
-      setTweetContent('');
-    } else {
-      // Handle error (disable post button and change input border color)
-    }
-  };
+    useEffect(() => {
+        setIsValid(tweetContent.length <= 280);
+    }, [tweetContent]);
 
-  return (
-    <div>
-      <textarea
-        value={tweetContent}
-        onChange={(e) => setTweetContent(e.target.value)}
-        placeholder="What's on your mind?"
-      />
-      <button onClick={handleTweetSubmit}>Post</button>
-    </div>
-  );
+    const handleTweetSubmit = () => {
+        if (isValid) {
+            const newTweet: Tweet = {
+                id: Date.now(),
+                author: user.name,
+                content: tweetContent,
+                createdAt: new Date().toISOString(),
+            };
+            addTweet(newTweet);
+            setTweetContent('');
+        }
+    };
+
+    return (
+        <NewTweetContainer direction='column' container>
+            <Grid item>
+                <Typography fontWeight='500' variant='body1'>{user.name}</Typography>
+            </Grid>
+            <TextField
+                label="What's on your mind?"
+                variant="outlined"
+                multiline
+                value={tweetContent}
+                onChange={(e) => setTweetContent(e.target.value)}
+                error={!isValid}
+                helperText={`${tweetContent.length}/280`}
+            />
+            <Button onClick={handleTweetSubmit} disabled={!isValid}>
+                Post
+            </Button>
+        </NewTweetContainer>
+    );
 };
 
 export default NewTweetForm;
